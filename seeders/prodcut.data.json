@@ -1,0 +1,625 @@
+[
+	{
+		"product_name": "Nike Air Force 1 '07",
+		"product_thumbs": [],
+		"product_description": "The radiance lives on in the Nike Air Force 1 '07, the basketball original that puts a fresh spin on what you know best: durably stitched overlays, clean finishes and the perfect amount of flash to make you shine.",
+		"product_price": "2,929,000",
+		"product_quantity": 100,
+		"product_type": "Clothing",
+		"product_attributes": {
+			"brand": "Nike",
+			"size": "40",
+			"colour": "White"
+		}
+	},
+
+	{
+		"product_name": "Nike Dunk Low Retro",
+		"product_thumbs": [],
+		"product_description": "Recognising the Dunk's roots as the top-ranking university-team sneaker, the Be True To Your School Pack looks to the original ad campaign for inspiration. Colours represent top-flight universities, while crisp leather has the perfect amount of sheen to make 'em a hands-down win. So lace up and show off that varsity spirit. Are you game?",
+		"product_price": "2,929,000",
+		"product_quantity": 100,
+		"product_type": "Clothing",
+		"product_attributes": {
+			"brand": "Nike",
+			"size": "40",
+			"colour": "White/Dusty Cactus/Cosmic"
+		}
+	},
+
+	{
+		"product_name": "Nike SB Force 58",
+		"product_thumbs": [],
+		"product_description": "The latest and greatest innovation to hit the streets, the Force 58 gives you the durability of a cupsole with the flexibility of vulcanised shoes. Made from canvas and suede and finished with perforations on the toe, the whole look is infused with heritage basketball DNA.",
+		"product_price": "2,189,000",
+		"product_quantity": 100,
+		"product_type": "Clothing",
+		"product_attributes": {
+			"brand": "Nike",
+			"size": "40",
+			"colour": "Phantom/Summit"
+		}
+	},
+
+	{
+		"product_name": "Nike Dunk Low Retro SE",
+		"product_thumbs": [],
+		"product_description": "The ''80s b-ball icon returns with classic colours, crisp leather and throwback hoops flair. Channelling vintage style back onto the streets, its padded collar lets you take your game anywhere—in comfort.",
+		"product_price": "3,519,000",
+		"product_quantity": 100,
+		"product_type": "Clothing",
+		"product_attributes": {
+			"brand": "Nike",
+			"size": "40",
+			"colour": "White/Platinum Tint/Pure"
+		}
+	},
+
+	{
+		"product_name": "Nike Air Dunk Jumbo",
+		"product_thumbs": [],
+		"product_description": "Your favourite look goes big and bold. Extra-large branding exaggerates the classic look, while the Air strobel unit puts cushioning right beneath your feet. And if that''s not enough, the ''inside-out'' tongue construction and new lacing system bring a new look that's customisable. How will you rock yours?",
+		"product_price": "3,669,000",
+		"product_quantity": 100,
+		"product_type": "Clothing",
+		"product_attributes": {
+			"brand": "Nike",
+			"size": "40",
+			"colour": "Black/White"
+		}
+	},
+
+	{
+		"product_name": "Nike SB Chron 2",
+		"product_thumbs": [],
+		"product_description": "Flexible and breathable, the Nike SB Chron 2 is a sequel worthy of its predecessor.The revamped design includes a reshaped collar and heel for an improved fit—all while maintaining the comfort and performance you expect from Nike SB.",
+		"product_price": "2,069,000",
+		"product_quantity": 100,
+		"product_type": "Clothing",
+		"product_attributes": {
+			"brand": "Nike",
+			"size": "40",
+			"colour": "Anthracite/Anthracite/Sail/University Gold"
+		}
+	}
+]
+
+
+
+-- insert users
+select * from users
+
+-- insert colors
+select * from colors
+delete from colors
+
+INSERT INTO colors(name,value) VALUES ('White', '#FFFFFF');
+INSERT INTO colors(name,value) VALUES ('Red', '#FF0000');
+INSERT INTO colors(name, value) VALUES ('Orange', '#FFA500');
+INSERT INTO colors(name, value) VALUES ('Yellow', '#FFFF00');
+INSERT INTO colors(name, value) VALUES ('Green', '#008000');
+INSERT INTO colors(name, value) VALUES ('Blue', '#0000FF');
+INSERT INTO colors(name, value) VALUES ('Purple', '#800080');
+INSERT INTO colors(name, value) VALUES ('Black', '#000000');
+INSERT INTO colors(name, value) VALUES ('Pink', '#FFC0CB');
+INSERT INTO colors (name, value)VALUES ('Gray', '#808080');
+
+
+
+
+
+-- insert sizes
+select * from sizes
+delete from sizes
+
+INSERT INTO sizes(name, value) VALUES
+  ('Extra Small', 'XS'),
+  ('Small', 'S'),
+  ('Medium', 'M'),
+  ('Large', 'L'),
+  ('Extra Large', 'XL');
+  
+-- insert categories
+select * from categories
+delete from categories
+insert into categories(name) values ('Backpack'),('Shoes'),('Car Coat'),('Other');
+
+
+-- insert products
+select * from products
+select * from clothing
+---------- 1
+
+INSERT INTO clothing("shopId", category, size, color)
+VALUES (
+    (SELECT id FROM users WHERE email = 'admin@gmail.com'),
+    (SELECT id FROM categories WHERE name = 'Shoes'),
+    (SELECT id FROM sizes WHERE value = 'XS'),
+    (SELECT id FROM colors WHERE name = 'White')
+);
+
+INSERT INTO products (product_name, product_description, product_price, product_quantity, product_type, product_attributes, product_thumbs, "shopId", product_slug, id)
+VALUES (
+    'Nike Air Force 1 ''07',
+    'The radiance lives on in the Nike Air Force 1 ''07, the basketball original that puts a fresh spin on what you know best: durably stitched overlays, clean finishes and the perfect amount of flash to make you shine.',
+    1000,
+    200,
+    'Clothing',
+    '{"size": "XS", "color": "White", "category": "Shoes"}',
+    '{
+        "https://rxjshop-s3-bucket.s3.ap-southeast-1.amazonaws.com/Nike%20Air%20Force%201%20%2707/air-force-1-07-%281%29.png?AWSAccessKeyId=AKIAUGCNSNYC62XXGT6O&Expires=1749397189&Signature=mGwzd5iGf2XNlEoPiTiA5pim9rY%3D",
+        "https://rxjshop-s3-bucket.s3.ap-southeast-1.amazonaws.com/Nike%20Air%20Force%201%20%2707/air-force-1-07-%282%29.png?AWSAccessKeyId=AKIAUGCNSNYC62XXGT6O&Expires=1749397289&Signature=N0xMe%2FTqnYhpvn%2BtpJjmZegPWio%3D",
+        "https://rxjshop-s3-bucket.s3.ap-southeast-1.amazonaws.com/Nike%20Air%20Force%201%20%2707/air-force-1-07-%283%29.png?AWSAccessKeyId=AKIAUGCNSNYC62XXGT6O&Expires=1749397310&Signature=6833sGuCcpgWsKHWh7w%2BeFdk0UE%3D",
+        "https://rxjshop-s3-bucket.s3.ap-southeast-1.amazonaws.com/Nike%20Air%20Force%201%20%2707/air-force-1-07-%284%29.png?AWSAccessKeyId=AKIAUGCNSNYC62XXGT6O&Expires=1749397325&Signature=C2CxmksV9xKKsuRwhCwvgjET4lc%3D"
+    }',
+    '840e5e3f-5f0b-4d09-b205-e580702892cf',
+    'air-force-1-07',
+    (SELECT id FROM clothing WHERE color = (SELECT id FROM colors WHERE name = 'White' LIMIT 1))
+);
+
+------------------ 2
+INSERT INTO clothing("shopId", category, size, color)
+VALUES (
+    (SELECT id FROM users WHERE email = 'admin@gmail.com'),
+    (SELECT id FROM categories WHERE name = 'Shoes'),
+    (SELECT id FROM sizes WHERE value = 'L'),
+    (SELECT id FROM colors WHERE name = 'Green')
+);
+
+INSERT INTO products (product_name, product_description, product_price, product_quantity, product_type, product_attributes, product_thumbs, "shopId", product_slug, id)
+VALUES (
+    'Nike Dunk Low Retro',
+    'Recognising the Dunk''s roots as the top-ranking university-team sneaker, the Be True To Your School Pack looks to the original ad campaign for inspiration. Colours represent top-flight universities, while crisp leather has the perfect amount of sheen to make em a hands-down win. So lace up and show off that varsity spirit. Are you game?',
+    2000,
+    200,
+    'Clothing',
+    '{"size": "L", "color": "Green", "category": "Shoes"}',
+    '{
+        "https://rxjshop-s3-bucket.s3.ap-southeast-1.amazonaws.com/Nike%20Dunk%20Low%20Retro/dunk-low-retro-%281%29.png?AWSAccessKeyId=AKIAUGCNSNYC62XXGT6O&Expires=1749401735&Signature=pF2VoKzldRKOwQMaZOjfnhJHNpU%3D",
+        "https://rxjshop-s3-bucket.s3.ap-southeast-1.amazonaws.com/Nike%20Dunk%20Low%20Retro/dunk-low-retro-%282%29.png?AWSAccessKeyId=AKIAUGCNSNYC62XXGT6O&Expires=1749401761&Signature=6v9%2FK6JUNlrIGmTnG5aFtuSNc2s%3D",
+        "https://rxjshop-s3-bucket.s3.ap-southeast-1.amazonaws.com/Nike%20Dunk%20Low%20Retro/dunk-low-retro-%283%29.png?AWSAccessKeyId=AKIAUGCNSNYC62XXGT6O&Expires=1749401786&Signature=Uwu7T9u8bmZM%2BqGPxeDXs543yt0%3D",
+        "https://rxjshop-s3-bucket.s3.ap-southeast-1.amazonaws.com/Nike%20Dunk%20Low%20Retro/dunk-low-retro-%284%29.png?AWSAccessKeyId=AKIAUGCNSNYC62XXGT6O&Expires=1749401797&Signature=gmnqv6sEXDJlooNehQD6evPaeqc%3D"
+    }',
+    '840e5e3f-5f0b-4d09-b205-e580702892cf',
+    'dunk-low-retro',
+    (SELECT id FROM clothing WHERE color = (SELECT id FROM colors WHERE name = 'Green' LIMIT 1))
+);
+
+
+
+
+------------ 3
+INSERT INTO clothing("shopId", category, size, color)
+VALUES (
+    (SELECT id FROM users WHERE email = 'admin@gmail.com'),
+    (SELECT id FROM categories WHERE name = 'Shoes'),
+    (SELECT id FROM sizes WHERE value = 'S'),
+    (SELECT id FROM colors WHERE name = 'Blue')
+);
+
+INSERT INTO products (product_name, product_description, product_price, product_quantity, product_type, product_attributes, product_thumbs, "shopId", product_slug, id)
+VALUES (
+    'Nike SB Force 58',
+    'The latest and greatest innovation to hit the streets, the Force 58 gives you the durability of a cupsole with the flexibility of vulcanised shoes. Made from canvas and suede and finished with perforations on the toe, the whole look is infused with heritage basketball DNA.',
+    3000,
+    200,
+    'Clothing',
+    '{"size": "S", "color": "Blue", "category": "Shoes"}',
+    '{
+        "https://rxjshop-s3-bucket.s3.ap-southeast-1.amazonaws.com/Nike%20SB%20Force%2058/sb-force-58-skate-%281%29.png?AWSAccessKeyId=AKIAUGCNSNYC62XXGT6O&Expires=1749402211&Signature=rbHXHzQGnfyT3%2BybIWdGlEHUqHg%3D",
+        "https://rxjshop-s3-bucket.s3.ap-southeast-1.amazonaws.com/Nike%20SB%20Force%2058/sb-force-58-skate-%28%29.png?AWSAccessKeyId=AKIAUGCNSNYC62XXGT6O&Expires=1749402253&Signature=0e774uZhRqRl%2F2xhUJIjW%2FWlSQ4%3D",
+        "https://rxjshop-s3-bucket.s3.ap-southeast-1.amazonaws.com/Nike%20SB%20Force%2058/sb-force-58-skate-%28%29.png?AWSAccessKeyId=AKIAUGCNSNYC62XXGT6O&Expires=1749402264&Signature=G%2FxFToMtBH%2FZ1advp2q%2FmCHgoe0%3D",
+        "https://rxjshop-s3-bucket.s3.ap-southeast-1.amazonaws.com/Nike%20SB%20Force%2058/sb-force-58-skate-%28%29.png?AWSAccessKeyId=AKIAUGCNSNYC62XXGT6O&Expires=1749402275&Signature=wI1E6HTBd1YwZq7C3cZVNjuROrI%3D"
+    }',
+    '840e5e3f-5f0b-4d09-b205-e580702892cf',
+    'sb-force-58-skate',
+    (SELECT id FROM clothing ORDER BY id DESC LIMIT 1)
+);
+
+------------------ 4
+INSERT INTO clothing("shopId", category, size, color)
+VALUES (
+    (SELECT id FROM users WHERE email = 'admin@gmail.com'),
+    (SELECT id FROM categories WHERE name = 'Shoes'),
+    (SELECT id FROM sizes WHERE value = 'M'),
+    (SELECT id FROM colors WHERE name = 'Gray')
+);
+
+INSERT INTO products (product_name, product_description, product_price, product_quantity, product_type, product_attributes, product_thumbs, "shopId", product_slug, id)
+VALUES (
+    'Nike Dunk Low Retro SE',
+    'The ''80s b-ball icon returns with classic colours, crisp leather and throwback hoops flair. Channelling vintage style back onto the streets, its padded collar lets you take your game anywhere—in comfort.',
+    4000,
+    200,
+    'Clothing',
+    '{"size": "M", "color": "Gray", "category": "Shoes"}',
+    '{
+        "https://rxjshop-s3-bucket.s3.ap-southeast-1.amazonaws.com/Nike%20Dunk%20Low%20Retro%20SE/dunk-low-retro-se-%281%29.png?AWSAccessKeyId=AKIAUGCNSNYC62XXGT6O&Expires=1749403019&Signature=jj6TzjjTKL1aDnAgZBPgovhTh2A%3D",
+		"https://rxjshop-s3-bucket.s3.ap-southeast-1.amazonaws.com/Nike%20Dunk%20Low%20Retro%20SE/dunk-low-retro-se-%282%29.png?AWSAccessKeyId=AKIAUGCNSNYC62XXGT6O&Expires=1749403073&Signature=kA5b0LJLK250fyHIl%2Blblo9xIuE%3D",
+		"https://rxjshop-s3-bucket.s3.ap-southeast-1.amazonaws.com/Nike%20Dunk%20Low%20Retro%20SE/dunk-low-retro-se-%283%29.png?AWSAccessKeyId=AKIAUGCNSNYC62XXGT6O&Expires=1749403085&Signature=5TN6pGhNIL31GanYcFF80VoQtkk%3D",
+		"https://rxjshop-s3-bucket.s3.ap-southeast-1.amazonaws.com/Nike%20Dunk%20Low%20Retro%20SE/dunk-low-retro-se-%284%29.png?AWSAccessKeyId=AKIAUGCNSNYC62XXGT6O&Expires=1749403098&Signature=rOYxG7oZPPRh4RONpU%2BpcULhmB4%3D"
+    }',
+    '840e5e3f-5f0b-4d09-b205-e580702892cf',
+    'dunk-low-retro-se',
+    (SELECT id FROM clothing ORDER BY created_at DESC LIMIT 1)
+);
+
+
+------------------ 5
+INSERT INTO clothing("shopId", category, size, color)
+VALUES (
+    (SELECT id FROM users WHERE email = 'admin@gmail.com'),
+    (SELECT id FROM categories WHERE name = 'Shoes'),
+    (SELECT id FROM sizes WHERE value = 'M'),
+    (SELECT id FROM colors WHERE name = 'Black')
+);
+
+INSERT INTO products (product_name, product_description, product_price, product_quantity, product_type, product_attributes, product_thumbs, "shopId", product_slug, id)
+VALUES (
+    'Nike Air Dunk Jumbo',
+    'Your favourite look goes big and bold. Extra-large branding exaggerates the classic look, while the Air strobel unit puts cushioning right beneath your feet. And if that''s not enough, the ''inside-out'' tongue construction and new lacing system bring a new look that''s customisable. How will you rock yours?',
+    5000,
+    200,
+    'Clothing',
+    '{"size": "M", "color": "Black", "category": "Shoes"}',
+    '{
+    	"https://rxjshop-s3-bucket.s3.ap-southeast-1.amazonaws.com/Nike%20Air%20Dunk%20Jumbo/air-dunk-jumbo-%281%29.png?AWSAccessKeyId=AKIAUGCNSNYC62XXGT6O&Expires=1749403504&Signature=h53f%2BydTzaCazWpBo%2BRktj8Hy%2Fg%3D",
+		"https://rxjshop-s3-bucket.s3.ap-southeast-1.amazonaws.com/Nike%20Air%20Dunk%20Jumbo/air-dunk-jumbo-%282%29.png?AWSAccessKeyId=AKIAUGCNSNYC62XXGT6O&Expires=1749403529&Signature=tRbiwULpVSIqWefHR9F98VdAB%2FI%3D",
+		"https://rxjshop-s3-bucket.s3.ap-southeast-1.amazonaws.com/Nike%20Air%20Dunk%20Jumbo/air-dunk-jumbo-%283%29.png?AWSAccessKeyId=AKIAUGCNSNYC62XXGT6O&Expires=1749403539&Signature=Dc6IGsaSxIGKhDIv4k0CcVgA6Ck%3D",
+		"https://rxjshop-s3-bucket.s3.ap-southeast-1.amazonaws.com/Nike%20Air%20Dunk%20Jumbo/air-dunk-jumbo-%284%29.png?AWSAccessKeyId=AKIAUGCNSNYC62XXGT6O&Expires=1749403552&Signature=DxW3KQ3EtP0eEnKnvONPEFBQIEo%3D"
+	}',
+    '840e5e3f-5f0b-4d09-b205-e580702892cf',
+    'air-dunk-jumbo',
+    (SELECT id FROM clothing ORDER BY created_at DESC LIMIT 1)
+);
+
+
+------------------ 6
+INSERT INTO clothing("shopId", category, size, color)
+VALUES (
+    (SELECT id FROM users WHERE email = 'admin@gmail.com'),
+    (SELECT id FROM categories WHERE name = 'Shoes'),
+    (SELECT id FROM sizes WHERE value = 'XS'),
+    (SELECT id FROM colors WHERE name = 'Yellow')
+);
+
+INSERT INTO products (product_name, product_description, product_price, product_quantity, product_type, product_attributes, product_thumbs, "shopId", product_slug, id)
+VALUES (
+    'Nike SB Chron 2',
+    'Flexible and breathable, the Nike SB Chron 2 is a sequel worthy of its predecessor.The revamped design includes a reshaped collar and heel for an improved fit—all while maintaining the comfort and performance you expect from Nike SB.',
+    6000,
+    200,
+    'Clothing',
+    '{"size": "XS", "color": "Yellow", "category": "Shoes"}',
+    '{
+    	"https://rxjshop-s3-bucket.s3.ap-southeast-1.amazonaws.com/Nike%20SB%20Chron%202/sb-chron-2-skate-%281%29.png?AWSAccessKeyId=AKIAUGCNSNYC62XXGT6O&Expires=1749403852&Signature=zGAjybnB%2F2dH118Ju0KsgBAr5MM%3D",
+		"https://rxjshop-s3-bucket.s3.ap-southeast-1.amazonaws.com/Nike%20SB%20Chron%202/sb-chron-2-skate-%282%29.png?AWSAccessKeyId=AKIAUGCNSNYC62XXGT6O&Expires=1749403876&Signature=9nV964VrRsP%2BgavMOdtIM2NXpSQ%3D",
+		"https://rxjshop-s3-bucket.s3.ap-southeast-1.amazonaws.com/Nike%20SB%20Chron%202/sb-chron-2-skate-%283%29.png?AWSAccessKeyId=AKIAUGCNSNYC62XXGT6O&Expires=1749403891&Signature=tVZAS7y8f%2B%2FcF%2FQiIPczyepe4fI%3D",
+		"https://rxjshop-s3-bucket.s3.ap-southeast-1.amazonaws.com/Nike%20SB%20Chron%202/sb-chron-2-skate-%284%29.png?AWSAccessKeyId=AKIAUGCNSNYC62XXGT6O&Expires=1749403903&Signature=htyRFfNTTgzu6opEbpvMm8bEytk%3D"
+	}',
+    '840e5e3f-5f0b-4d09-b205-e580702892cf',
+    'sb-chron-2-skate',
+    (SELECT id FROM clothing ORDER BY created_at DESC LIMIT 1)
+);
+
+
+------------------ 7
+INSERT INTO clothing("shopId", category, size, color)
+VALUES (
+    (SELECT id FROM users WHERE email = 'admin@gmail.com'),
+    (SELECT id FROM categories WHERE name = 'Shoes'),
+    (SELECT id FROM sizes WHERE value = 'S'),
+    (SELECT id FROM colors WHERE name = 'Black')
+);
+
+INSERT INTO products (product_name, product_description, product_price, product_quantity, product_type, product_attributes, product_thumbs, "shopId", product_slug, id)
+VALUES (
+    'Nike Air Max Dn',
+    'Say hello to the next generation of Air technology. The Air Max Dn features our Dynamic Air unit system of dual-pressure tubes, creating a reactive sensation with every step. This results in a futuristic design that''s comfortable enough to wear from day to night. Go ahead—Feel The Unreal.',
+    7000,
+    200,
+    'Clothing',
+    '{"size": "S", "color": "Black", "category": "Shoes"}',
+    '{
+    	"https://rxjshop-s3-bucket.s3.ap-southeast-1.amazonaws.com/Nike%20Air%20Max%20Dn/air-max-dn-%281%29.png?AWSAccessKeyId=AKIAUGCNSNYC62XXGT6O&Expires=1749405734&Signature=D6M11THM2aw8WGupsgGmWABiIyA%3D",
+		"https://rxjshop-s3-bucket.s3.ap-southeast-1.amazonaws.com/Nike%20Air%20Max%20Dn/air-max-dn-%282%29.png?AWSAccessKeyId=AKIAUGCNSNYC62XXGT6O&Expires=1749405759&Signature=4j2tJxKKsCBNJMrQgLV9qtONBpw%3D",
+		"https://rxjshop-s3-bucket.s3.ap-southeast-1.amazonaws.com/Nike%20Air%20Max%20Dn/air-max-dn-%283%29.png?AWSAccessKeyId=AKIAUGCNSNYC62XXGT6O&Expires=1749405770&Signature=FjcS%2BXShaBApIEDVAMo0OjlOkek%3D",
+		"https://rxjshop-s3-bucket.s3.ap-southeast-1.amazonaws.com/Nike%20Air%20Max%20Dn/air-max-dn-%284%29.png?AWSAccessKeyId=AKIAUGCNSNYC62XXGT6O&Expires=1749405783&Signature=NjjY%2FrDg1rNz%2BZ9JnB5onfjfqL4%3D"
+	}',
+    '840e5e3f-5f0b-4d09-b205-e580702892cf',
+    'air-max-dn',
+    (SELECT id FROM clothing ORDER BY created_at DESC LIMIT 1)
+);
+
+
+------------------ 8
+INSERT INTO clothing("shopId", category, size, color)
+VALUES (
+    (SELECT id FROM users WHERE email = 'admin@gmail.com'),
+    (SELECT id FROM categories WHERE name = 'Shoes'),
+    (SELECT id FROM sizes WHERE value = 'S'),
+    (SELECT id FROM colors WHERE name = 'White')
+);
+
+INSERT INTO products (product_name, product_description, product_price, product_quantity, product_type, product_attributes, product_thumbs, "shopId", product_slug, id)
+VALUES (
+    'Nike V2K Run',
+    'Fast forward. Rewind. Doesn''t matter—this shoe takes retro into the future. The V2K remasters everything you love about the Vomero in a look pulled straight from an early ''00s running catalogue. Layer up in a mixture of flashy metallics, referential plastic details and a midsole with a perfectly vintage aesthetic. And the chunky heel makes sure wherever you go, it''s in comfort.',
+    7000,
+    200,
+    'Clothing',
+    '{"size": "S", "color": "White", "category": "Shoes"}',
+    '{
+    	"https://rxjshop-s3-bucket.s3.ap-southeast-1.amazonaws.com/Nike%20V2K%20Run/v2k-run-%281%29.png?AWSAccessKeyId=AKIAUGCNSNYC62XXGT6O&Expires=1749406011&Signature=2%2FTl5xP%2BijgsUVX6GeeFl19LGbs%3D",
+		"https://rxjshop-s3-bucket.s3.ap-southeast-1.amazonaws.com/Nike%20V2K%20Run/v2k-run-%282%29.png?AWSAccessKeyId=AKIAUGCNSNYC62XXGT6O&Expires=1749406042&Signature=btO%2Bn4K%2BIVanFzDfrF4UNfrfZac%3D",
+		"https://rxjshop-s3-bucket.s3.ap-southeast-1.amazonaws.com/Nike%20V2K%20Run/v2k-run-%283%29.png?AWSAccessKeyId=AKIAUGCNSNYC62XXGT6O&Expires=1749406052&Signature=OhF9gZHACSqvf2k0eDDLO9Cg4qM%3D",
+		"https://rxjshop-s3-bucket.s3.ap-southeast-1.amazonaws.com/Nike%20V2K%20Run/v2k-run-%284%29.png?AWSAccessKeyId=AKIAUGCNSNYC62XXGT6O&Expires=1749406063&Signature=6aZi1E7U5wLNDuQyqi6CYL4IOTU%3D"
+	}',
+    '840e5e3f-5f0b-4d09-b205-e580702892cf',
+    'v2k-run',
+    (SELECT id FROM clothing ORDER BY created_at DESC LIMIT 1)
+);
+
+------------------ 9
+INSERT INTO clothing("shopId", category, size, color)
+VALUES (
+    (SELECT id FROM users WHERE email = 'admin@gmail.com'),
+    (SELECT id FROM categories WHERE name = 'Shoes'),
+    (SELECT id FROM sizes WHERE value = 'M'),
+    (SELECT id FROM colors WHERE name = 'White')
+);
+
+INSERT INTO products (product_name, product_description, product_price, product_quantity, product_type, product_attributes, product_thumbs, "shopId", product_slug, id)
+VALUES (
+    'Tatum 2 ''Legacy'' PF',
+    'You know the legend of Jordan Brand and the lore of Boston. Jayson Tatum takes both legacies into the future with this edition of the Tatum 2, combining the iconic "White Cement" with hot pops of colour that celebrate his team. So, what''s your legacy going to be? Step into the lightweight and flexible build of the Tatum 2 and make it what you want.',
+    9000,
+    200,
+    'Clothing',
+    '{"size": "M", "color": "White", "category": "Shoes"}',
+    '{
+    	"https://rxjshop-s3-bucket.s3.ap-southeast-1.amazonaws.com/Tatum%202%20%27Legacy%27%20PF/tatum-2-legacy-pf-%281%29.jfif?AWSAccessKeyId=AKIAUGCNSNYC62XXGT6O&Expires=1749406419&Signature=cWo3TZWn8FX0B7yIfIsC39qUrsI%3D",
+		"https://rxjshop-s3-bucket.s3.ap-southeast-1.amazonaws.com/Tatum%202%20%27Legacy%27%20PF/tatum-2-legacy-pf-%282%29.jfif?AWSAccessKeyId=AKIAUGCNSNYC62XXGT6O&Expires=1749406441&Signature=EyVAr0uk9TQMgvJ9xGNyFf6FfpI%3D",
+		"https://rxjshop-s3-bucket.s3.ap-southeast-1.amazonaws.com/Tatum%202%20%27Legacy%27%20PF/tatum-2-legacy-pf-%283%29.jfif?AWSAccessKeyId=AKIAUGCNSNYC62XXGT6O&Expires=1749406456&Signature=rjHwOZKHoY5UP2MH6WKLPkfsUSY%3D",
+		"https://rxjshop-s3-bucket.s3.ap-southeast-1.amazonaws.com/Tatum%202%20%27Legacy%27%20PF/tatum-2-legacy-pf-%284%29.jfif?AWSAccessKeyId=AKIAUGCNSNYC62XXGT6O&Expires=1749406472&Signature=DIXN8bvuPcZryx0HojSgYyg6OCA%3D"
+	}',
+    '840e5e3f-5f0b-4d09-b205-e580702892cf',
+    'tatum-2-legacy-pf',
+    (SELECT id FROM clothing ORDER BY created_at DESC LIMIT 1)
+);
+
+------------------ 10
+INSERT INTO clothing("shopId", category, size, color)
+VALUES (
+    (SELECT id FROM users WHERE email = 'admin@gmail.com'),
+    (SELECT id FROM categories WHERE name = 'Shoes'),
+    (SELECT id FROM sizes WHERE value = 'XL'),
+    (SELECT id FROM colors WHERE name = 'Blue')
+);
+
+INSERT INTO products (product_name, product_description, product_price, product_quantity, product_type, product_attributes, product_thumbs, "shopId", product_slug, id)
+VALUES (
+    'Air Jordan 1 Low SE',
+    'New colours and fresh textures give you an updated AJ1 without losing its iconic silhouette and familiar feel. Made from premium materials, this all-time favourite comes decked out with comfortable Nike Air cushioning and subtle design details (check out that embroidered heel) to give you a staple sneaker with a modern look.',
+    10000,
+    200,
+    'Clothing',
+    '{"size": "XL", "color": "Blue", "category": "Shoes"}',
+    '{
+    	"https://rxjshop-s3-bucket.s3.ap-southeast-1.amazonaws.com/Air%20Jordan%201%20Low%20SE/air-jordan-1-low-se-%281%29.jfif?AWSAccessKeyId=AKIAUGCNSNYC62XXGT6O&Expires=1749406728&Signature=U0q0xzKJjiabxdVB2XeKfB0g9%2Bg%3D",
+		"https://rxjshop-s3-bucket.s3.ap-southeast-1.amazonaws.com/Air%20Jordan%201%20Low%20SE/air-jordan-1-low-se-%282%29.jfif?AWSAccessKeyId=AKIAUGCNSNYC62XXGT6O&Expires=1749406757&Signature=i6jXUcsYnR0vZbvXVNnCC5Ly9vU%3D",
+		"https://rxjshop-s3-bucket.s3.ap-southeast-1.amazonaws.com/Air%20Jordan%201%20Low%20SE/air-jordan-1-low-se-%283%29.jfif?AWSAccessKeyId=AKIAUGCNSNYC62XXGT6O&Expires=1749406775&Signature=nJk%2BqkrEVJyodrlAmb84yTHGlwk%3D",
+		"https://rxjshop-s3-bucket.s3.ap-southeast-1.amazonaws.com/Air%20Jordan%201%20Low%20SE/air-jordan-1-low-se-%284%29.jfif?AWSAccessKeyId=AKIAUGCNSNYC62XXGT6O&Expires=1749406785&Signature=jV0EfbtLTCZZLJsaefAJ88kfwDw%3D"
+	}',
+    '840e5e3f-5f0b-4d09-b205-e580702892cf',
+    'air-jordan-1-low-se',
+    (SELECT id FROM clothing ORDER BY created_at DESC LIMIT 1)
+);
+
+------------------ 11
+INSERT INTO clothing("shopId", category, size, color)
+VALUES (
+    (SELECT id FROM users WHERE email = 'admin@gmail.com'),
+    (SELECT id FROM categories WHERE name = 'Shoes'),
+    (SELECT id FROM sizes WHERE value = 'XL'),
+    (SELECT id FROM colors WHERE name = 'Black')
+);
+
+INSERT INTO products (product_name, product_description, product_price, product_quantity, product_type, product_attributes, product_thumbs, "shopId", product_slug, id)
+VALUES (
+    'Nike Go FlyEase',
+    'Ditch the laces and get outside. These kicks feature Nike''s revolutionary FlyEase technology, making on-and-off a breeze. With a heel that pivots open for a totally hands-free entry, they''re great for people with limited mobility—or anyone who wants a quicker way to get going.',
+    1000,
+    200,
+    'Clothing',
+    '{"size": "XL", "color": "Blue", "category": "Shoes"}',
+    '{
+    	"https://rxjshop-s3-bucket.s3.ap-southeast-1.amazonaws.com/Nike%20Go%20FlyEase/go-flyease-easy-on-off-%281%29.png?AWSAccessKeyId=AKIAUGCNSNYC62XXGT6O&Expires=1749407097&Signature=Fz%2B55lsfDM9Z5JulbVKMeXznzys%3D",
+		"https://rxjshop-s3-bucket.s3.ap-southeast-1.amazonaws.com/Nike%20Go%20FlyEase/go-flyease-easy-on-off-%282%29.png?AWSAccessKeyId=AKIAUGCNSNYC62XXGT6O&Expires=1749407117&Signature=tMFxY%2BjPLPzafFTI7kTFzMRV%2BdA%3D",
+		"https://rxjshop-s3-bucket.s3.ap-southeast-1.amazonaws.com/Nike%20Go%20FlyEase/go-flyease-easy-on-off-%283%29.png?AWSAccessKeyId=AKIAUGCNSNYC62XXGT6O&Expires=1749407127&Signature=rHOPCOjfgj%2FxW0GAo6DBDDuWVf0%3D",
+		"https://rxjshop-s3-bucket.s3.ap-southeast-1.amazonaws.com/Nike%20Go%20FlyEase/go-flyease-easy-on-off-%284%29.png?AWSAccessKeyId=AKIAUGCNSNYC62XXGT6O&Expires=1749407139&Signature=N63yDkwswzuwCXvtP79aQBbEpnI%3D"
+	}',	
+    '840e5e3f-5f0b-4d09-b205-e580702892cf',
+    'go-flyease-easy-on-off',
+    (SELECT id FROM clothing ORDER BY created_at DESC LIMIT 1)
+);
+
+
+------------------ 12
+INSERT INTO clothing("shopId", category, size, color)
+VALUES (
+    (SELECT id FROM users WHERE email = 'admin@gmail.com'),
+    (SELECT id FROM categories WHERE name = 'Shoes'),
+    (SELECT id FROM sizes WHERE value = 'XL'),
+    (SELECT id FROM colors WHERE name = 'Gray')
+);
+
+INSERT INTO products (product_name, product_description, product_price, product_quantity, product_type, product_attributes, product_thumbs, "shopId", product_slug, id)
+VALUES (
+    'Nike Downshifter 13',
+    'Whether you''re starting your running journey or an expert eager to switch up your pace, the Downshifter 13 is down for the ride. With a revamped upper, cushioning and durability, it helps you find that extra gear or take that first stride towards chasing down your goals.',
+    2000,
+    200,
+    'Clothing',
+    '{"size": "XL", "color": "Gray", "category": "Shoes"}',
+    '{
+    	"https://rxjshop-s3-bucket.s3.ap-southeast-1.amazonaws.com/Nike%20Downshifter%2013/downshifter-13-road-running-%281%29.jfif?AWSAccessKeyId=AKIAUGCNSNYC62XXGT6O&Expires=1749407434&Signature=qGHnPKRjFtJGyVlTarB3HJ0jXYg%3D",
+		"https://rxjshop-s3-bucket.s3.ap-southeast-1.amazonaws.com/Nike%20Downshifter%2013/downshifter-13-road-running-%282%29.jfif?AWSAccessKeyId=AKIAUGCNSNYC62XXGT6O&Expires=1749407541&Signature=EuYGinCCGjYJg9bhKTMnTNUxMo4%3D",
+		"https://rxjshop-s3-bucket.s3.ap-southeast-1.amazonaws.com/Nike%20Downshifter%2013/downshifter-13-road-running-%283%29.png?AWSAccessKeyId=AKIAUGCNSNYC62XXGT6O&Expires=1749407603&Signature=P5I9KnzTw1HpJeF1nDGQ2pUHtx8%3D",
+		"https://rxjshop-s3-bucket.s3.ap-southeast-1.amazonaws.com/Nike%20Downshifter%2013/downshifter-13-road-running-%284%29.png?AWSAccessKeyId=AKIAUGCNSNYC62XXGT6O&Expires=1749407623&Signature=%2BVTxvxu9IreSjpy7LNc4%2F9rlszY%3D"
+	}',	
+    '840e5e3f-5f0b-4d09-b205-e580702892cf',
+    'downshifter-13-road-running',
+    (SELECT id FROM clothing ORDER BY created_at DESC LIMIT 1)
+);
+
+
+------------------ 13
+INSERT INTO clothing("shopId", category, size, color)
+VALUES (
+    (SELECT id FROM users WHERE email = 'admin@gmail.com'),
+    (SELECT id FROM categories WHERE name = 'Shoes'),
+    (SELECT id FROM sizes WHERE value = 'M'),
+    (SELECT id FROM colors WHERE name = 'Black')
+);
+
+INSERT INTO products (product_name, product_description, product_price, product_quantity, product_type, product_attributes, product_thumbs, "shopId", product_slug, id)
+VALUES (
+    'Nike Air Zoom TR 1',
+    'Gains aren''t given, they''re earned. Go get what''s yours. We spring-loaded this do-it-all trainer with responsiveness for surges of off-the-rack energy. It can withstand the rigours of high-intensity exertion while sticking with you as you wind your way through the everyday paces.',
+    3000,
+    200,
+    'Clothing',
+    '{"size": "M", "color": "Black", "category": "Shoes"}',
+    '{
+    	"https://rxjshop-s3-bucket.s3.ap-southeast-1.amazonaws.com/Nike%20Air%20Zoom%20TR%201/air-zoom-tr-1-workout-%281%29.png?AWSAccessKeyId=AKIAUGCNSNYC62XXGT6O&Expires=1749407836&Signature=MfgzrWRjuOO3KbZLeB1BElk7Afs%3D",
+		"https://rxjshop-s3-bucket.s3.ap-southeast-1.amazonaws.com/Nike%20Air%20Zoom%20TR%201/air-zoom-tr-1-workout-%282%29.png?AWSAccessKeyId=AKIAUGCNSNYC62XXGT6O&Expires=1749407888&Signature=bFgP0GI4MTbic%2FF0UbwppTRciYw%3D",
+		"https://rxjshop-s3-bucket.s3.ap-southeast-1.amazonaws.com/Nike%20Air%20Zoom%20TR%201/air-zoom-tr-1-workout-%282%29.png?AWSAccessKeyId=AKIAUGCNSNYC62XXGT6O&Expires=1749407888&Signature=bFgP0GI4MTbic%2FF0UbwppTRciYw%3D",
+		"https://rxjshop-s3-bucket.s3.ap-southeast-1.amazonaws.com/Nike%20Air%20Zoom%20TR%201/air-zoom-tr-1-workout-%284%29.png?AWSAccessKeyId=AKIAUGCNSNYC62XXGT6O&Expires=1749407926&Signature=%2BS3RIQeGQAKSBmJ19vPZoyqKGAM%3D"
+	}',	
+    '840e5e3f-5f0b-4d09-b205-e580702892cf',
+    'air-zoom-tr-1-workout',
+    (SELECT id FROM clothing ORDER BY created_at DESC LIMIT 1)
+);
+
+------------------ 14
+INSERT INTO clothing("shopId", category, size, color)
+VALUES (
+    (SELECT id FROM users WHERE email = 'admin@gmail.com'),
+    (SELECT id FROM categories WHERE name = 'Shoes'),
+    (SELECT id FROM sizes WHERE value = 'L'),
+    (SELECT id FROM colors WHERE name = 'White')
+);
+
+INSERT INTO products (product_name, product_description, product_price, product_quantity, product_type, product_attributes, product_thumbs, "shopId", product_slug, id)
+VALUES (
+    'Nike Pegasus 41',
+    'Responsive cushioning in the Pegasus provides an energised ride for everyday road running. Experience lighter-weight energy return with dual Air Zoom units and a ReactX foam midsole. Plus, improved engineered mesh on the upper decreases weight and increases breathability.',
+    4000,
+    200,
+    'Clothing',
+    '{"size": "L", "color": "White", "category": "Shoes"}',
+    '{
+    	"https://rxjshop-s3-bucket.s3.ap-southeast-1.amazonaws.com/Nike%20Pegasus%2041/pegasus-41-road-running-%281%29.jfif?AWSAccessKeyId=AKIAUGCNSNYC62XXGT6O&Expires=1749408185&Signature=BpqKFchk4P6Lmw21RMDPfDHe%2F4A%3D",
+		"https://rxjshop-s3-bucket.s3.ap-southeast-1.amazonaws.com/Nike%20Pegasus%2041/pegasus-41-road-running-%282%29.jfif?AWSAccessKeyId=AKIAUGCNSNYC62XXGT6O&Expires=1749408215&Signature=HpNd276u8WO7%2B7706DDqKIW1wsc%3D",
+		"https://rxjshop-s3-bucket.s3.ap-southeast-1.amazonaws.com/Nike%20Pegasus%2041/pegasus-41-road-running-%283%29.jfif?AWSAccessKeyId=AKIAUGCNSNYC62XXGT6O&Expires=1749408224&Signature=pgokuQL6T3gD2GDuUM3PQ3ma%2B50%3D",
+		"https://rxjshop-s3-bucket.s3.ap-southeast-1.amazonaws.com/Nike%20Pegasus%2041/pegasus-41-road-running-%284%29.jfif?AWSAccessKeyId=AKIAUGCNSNYC62XXGT6O&Expires=1749408234&Signature=jVleK5oQQC0KmzsY9gDty2dibYQ%3D"
+	}',	
+    '840e5e3f-5f0b-4d09-b205-e580702892cf',
+    'pegasus-41-road-running',
+    (SELECT id FROM clothing ORDER BY created_at DESC LIMIT 1)
+);
+
+------------------ 15
+INSERT INTO clothing("shopId", category, size, color)
+VALUES (
+    (SELECT id FROM users WHERE email = 'admin@gmail.com'),
+    (SELECT id FROM categories WHERE name = 'Shoes'),
+    (SELECT id FROM sizes WHERE value = 'M'),
+    (SELECT id FROM colors WHERE name = 'Blue')
+);
+
+INSERT INTO products (product_name, product_description, product_price, product_quantity, product_type, product_attributes, product_thumbs, "shopId", product_slug, id)
+VALUES (
+    'Tatum 2 PF',
+    'It''s not over until you hear that buzzer. Fly through your game with energy to spare in the Tatum 2. It helps you stay light on your feet by limiting the use of heavy rubber. A full-length Nike Air Strobel unit helps support your quick shifts, and the frame pairs with supportive foam that moulds to your feet for a contained feel.',
+    5000,
+    200,
+    'Clothing',
+    '{"size": "M", "color": "Blue", "category": "Shoes"}',
+    '{
+    	"https://rxjshop-s3-bucket.s3.ap-southeast-1.amazonaws.com/Tatum%202%20PF/tatum-2-pf-basketball-%281%29.jfif?AWSAccessKeyId=AKIAUGCNSNYC62XXGT6O&Expires=1749408625&Signature=P5kQ5zb7TYY49YhABs5uc3j97Qs%3D",
+		"https://rxjshop-s3-bucket.s3.ap-southeast-1.amazonaws.com/Tatum%202%20PF/tatum-2-pf-basketball-%282%29.jfif?AWSAccessKeyId=AKIAUGCNSNYC62XXGT6O&Expires=1749408645&Signature=dsUAAI%2Fdvzu46H0PxVETgytApB8%3D",
+		"https://rxjshop-s3-bucket.s3.ap-southeast-1.amazonaws.com/Tatum%202%20PF/tatum-2-pf-basketball-%283%29.png?AWSAccessKeyId=AKIAUGCNSNYC62XXGT6O&Expires=1749408668&Signature=VJki9%2BefCsQS7tgUbnOgc4uv7TI%3D",
+		"https://rxjshop-s3-bucket.s3.ap-southeast-1.amazonaws.com/Tatum%202%20PF/tatum-2-pf-basketball-%284%29.jfif?AWSAccessKeyId=AKIAUGCNSNYC62XXGT6O&Expires=1749408688&Signature=ACghqTHyfRgADe7qvaA30%2FsVBlk%3D"
+	}',	
+    '840e5e3f-5f0b-4d09-b205-e580702892cf',
+    'tatum-2-pf-basketball',
+    (SELECT id FROM clothing ORDER BY created_at DESC LIMIT 1)
+);
+
+
+------------------ 16
+INSERT INTO clothing("shopId", category, size, color)
+VALUES (
+    (SELECT id FROM users WHERE email = 'admin@gmail.com'),
+    (SELECT id FROM categories WHERE name = 'Shoes'),
+    (SELECT id FROM sizes WHERE value = 'S'),
+    (SELECT id FROM colors WHERE name = 'Green')
+);
+
+INSERT INTO products (product_name, product_description, product_price, product_quantity, product_type, product_attributes, product_thumbs, "shopId", product_slug, id)
+VALUES (
+    'Jumpman MVP',
+    'We didn''t invent the remix—but considering the material we get to sample, this one''s a no-brainer. We took elements from the AJ6, 7 and 8, making them into a completely new shoe that celebrates MJ''s first 3-peat championship run. With leather, textile and nubuck details, these sneakers honour one legacy while encouraging you to cement your own.',
+    6000,
+    200,
+    'Clothing',
+    '{"size": "S", "color": "Green", "category": "Shoes"}',
+    '{
+    	"https://rxjshop-s3-bucket.s3.ap-southeast-1.amazonaws.com/Jumpman%20MVP/jumpman-mvp-%281%29.png?AWSAccessKeyId=AKIAUGCNSNYC62XXGT6O&Expires=1749408952&Signature=MUlc8dmCNiwkbmoEjxPaOqJLHmU%3D",
+		"https://rxjshop-s3-bucket.s3.ap-southeast-1.amazonaws.com/Jumpman%20MVP/jumpman-mvp-%282%29.png?AWSAccessKeyId=AKIAUGCNSNYC62XXGT6O&Expires=1749408976&Signature=t0yR1K%2BqHw0oexgP2R9aiDkexwA%3D",
+		"https://rxjshop-s3-bucket.s3.ap-southeast-1.amazonaws.com/Jumpman%20MVP/jumpman-mvp-%283%29.png?AWSAccessKeyId=AKIAUGCNSNYC62XXGT6O&Expires=1749408985&Signature=csKOateJwBXJDatV9pRcqM%2BLaMg%3D",
+		"https://rxjshop-s3-bucket.s3.ap-southeast-1.amazonaws.com/Jumpman%20MVP/jumpman-mvp-%284%29.png?AWSAccessKeyId=AKIAUGCNSNYC62XXGT6O&Expires=1749408995&Signature=dMifmrbPPwRG3e3UvVdvEhYqyio%3D"
+	}',	
+    '840e5e3f-5f0b-4d09-b205-e580702892cf',
+    'jumpman-mvp',
+    (SELECT id FROM clothing ORDER BY created_at DESC LIMIT 1)
+);
+
+// {
+//     "status": 200,
+//     "message": "Get all products successfully",
+//     "success": true,
+//     "data": [
+//         {
+//             "id": "603933bc-008a-4770-b4d5-82df9fc81a5e",
+//             "product_name": "Nike SB Chron 2",
+//             "product_thumbs": [
+//                 "https://rxjshop-s3-bucket.s3.ap-southeast-1.amazonaws.com/06136b9a-d285-429b-99b2-d2a38529865c/hrm-db.jpg?AWSAccessKeyId=AKIAUGCNSNYC62XXGT6O&Expires=1748947478&Signature=4dE8x1JXAhq8aYbenNil1n6pkQI%3D"
+//             ],
+//             "product_description": "Flexible and breathable, the Nike SB Chron 2 is a sequel worthy of its predecessor.The revamped design includes a reshaped collar and heel for an improved fit—all while maintaining the comfort and performance you expect from Nike SB.",
+//             "product_price": "2,069,000",
+//             "product_quantity": "100",
+//             "product_type": "Clothing",
+//             "product_attributes": {
+//                 "brand": "Nike",
+//                 "size": "40",
+//                 "colour": "Anthracite/Anthracite/Sail/University Gold"
+//             },
+//             "product_shop": {
+//                 "id": "840e5e3f-5f0b-4d09-b205-e580702892cf",
+//                 "fullname": "undefined undefined"
+//             },
+//             "product_slug": "nike-sb-chron-2",
+//             "createdAt": "2024-06-03T10:44:37.581Z",
+//             "updatedAt": "2024-06-03T10:44:37.581Z",
+//             "product_ratingsAverage": 0,
+//             "isPublished": true
+//         }
+//     ],
+//     "timestamps": "2024-06-08T15:19:59.889Z",
+//     "path": "/products?limit=1&page=0&",
+//     "error": null
+
+// }

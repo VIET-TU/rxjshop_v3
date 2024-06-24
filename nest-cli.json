@@ -1,0 +1,48 @@
+{
+	"$schema": "https://json.schemastore.org/nest-cli",
+	"collection": "@nestjs/schematics",
+	"sourceRoot": "apps/rxjshop_v2/src",
+	"compilerOptions": {
+		"deleteOutDir": true,
+		"assets": [
+			{
+				"include": "templates/**/*",
+				"outDir": "dist/apps/rxjshop_v2/"
+			}
+		],
+		"watchAssets": true,
+		"webpack": true,
+		"tsConfigPath": "apps/rxjshop_v2/tsconfig.app.json"
+	},
+	"monorepo": true,
+	"root": "apps/rxjshop_v2",
+	"projects": {
+		"rxjshop_v2": {
+			"type": "application",
+			"root": "apps/rxjshop_v2",
+			"entryFile": "main",
+			"sourceRoot": "apps/rxjshop_v2/src",
+			"compilerOptions": {
+				"tsConfigPath": "apps/rxjshop_v2/tsconfig.app.json"
+			}
+		},
+		"api": {
+			"type": "application",
+			"root": "apps/api",
+			"entryFile": "main",
+			"sourceRoot": "apps/api/src",
+			"compilerOptions": {
+				"tsConfigPath": "apps/api/tsconfig.app.json"
+			}
+		},
+		"chat": {
+			"type": "application",
+			"root": "apps/chat",
+			"entryFile": "main",
+			"sourceRoot": "apps/chat/src",
+			"compilerOptions": {
+				"tsConfigPath": "apps/chat/tsconfig.app.json"
+			}
+		}
+	}
+}
